@@ -13,7 +13,7 @@ const Student = () => {
     userName: user?.name || "",
     email: user?.email || "",
     isMarked: false,
-    markDate: date.toISOString().split("T")[0],
+    markDate: "",
     isLeave: false,
     leaveReason: "",
     isLeaveApproved: false,
@@ -39,6 +39,7 @@ const Student = () => {
             ...attendance,
             isLeave: true,
             leaveReason: leaveText,
+            markDate:date.toISOString().split("T")[0]
           }),
         }
       );
@@ -51,7 +52,7 @@ const Student = () => {
     } catch (error) {
       console.error("Error marking attendance:", error);
     }
-    leaveFormStatus(false);
+    setLeaveFormStatus(false);
   };
 
   const markAttendance = async () => {
@@ -69,7 +70,7 @@ const Student = () => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user.token}`,
           },
-          body: JSON.stringify({ ...attendance, isMarked: true }),
+          body: JSON.stringify({ ...attendance, isMarked: true,markDate:date.toISOString().split("T")[0]}),
         }
       );
 

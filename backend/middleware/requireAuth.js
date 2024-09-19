@@ -4,9 +4,8 @@ const User = require("../models/User");
 const requireAuth = async (req, res, next) => {
   // Get the authorization header
   const { authorization } = req.headers;
-  console.log(authorization)
   if (!authorization) {
-    return res.status(401).json({ message: "Token required" });
+    return res.status(401).json({ message: "Token required" });n
   }
 
   const token = authorization.split(" ")[1];

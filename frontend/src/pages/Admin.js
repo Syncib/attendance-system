@@ -281,7 +281,7 @@ const Admin = () => {
                   >
                     Delete
                   </button>
-                  {item.isLeaveApproved || (
+                  {(item.isMarked || item.isLeaveApproved )|| (
                     <button
                       className="btn btn-warning ms-2"
                       onClick={() =>
